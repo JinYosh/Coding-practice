@@ -34,9 +34,23 @@ def isAnagramHM(str1, str2):
         if str1_HM[ch] != str2_HM[ch]:
             return False
     return True
+
+def isAnagramAlphabets(str1, str2):
+    if len(str1) != len(str2):
+        return False
+    aphabets_list_1 = [0] * ((ord('z') - ord('a')) + 1) 
+    aphabets_list_2 = [0] * ((ord('z') - ord('a')) + 1)
+    for i in range(len(str1)):
+        aphabets_list_1[ord(str1[i]) - ord('z')] += 1
+        aphabets_list_2[ord(str2[i]) - ord('z')] += 1
+    for i in range((ord('z') - ord('a')) + 1):
+        if aphabets_list_1[i] != aphabets_list_2[i]:
+            return False
+    return True
+
     
 
 if __name__ == "__main__":
     str1 = "abc"
     str2 = "cba"
-    print("Result:",isAnagramHM(str1, str2))
+    print("Result:",isAnagramAlphabets(str1, str2))
