@@ -53,4 +53,4 @@ def isAnagramAlphabets(str1, str2):
 if __name__ == "__main__":
     str1 = "abc"
     str2 = "cba"
-    print("Result:",isAnagramAlphabets(str1, str2))
+    print("Result:",isAnagramAlphabets(str1, str2)) 
