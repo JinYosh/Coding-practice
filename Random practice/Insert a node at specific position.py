@@ -14,7 +14,7 @@ def insertAtPos(head, data, position):
             newNode.next = curr
         prev = curr
         curr = curr.next
-        curr_i += 1
+        curr_i += 1 
     if curr_i <= position:
         prev.next = newNode
     return head
