@@ -33,7 +33,7 @@ def reverse(A, start, end):
 
         start += 1
         end -= 1
-    return A
+    return A 
 
 if __name__ == "__main__":
     A = [1, 2, 3, 4, 5, 6]
