@@ -5,5 +5,5 @@ def solve(A):
     return A
 
 if __name__ == "__main__":
-    A = [4, 3, 7, 8, 6, 2, 1]
+    A = [4, 3, 7, 8, 6, 2, 1] 
     print("Result:",solve(A))
