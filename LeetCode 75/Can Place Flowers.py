@@ -6,67 +6,56 @@ def solve(A, e_flower):
         prev = A[i]
     return True if e_flower == 0 else False
 
-def solve1(A, e_flower):
-    if len(A) == 1:
-        if A[0] == 0:
-            e_flower -= 1
-            return True if e_flower == 0 else False
+def solve1(flowerbed, n):
+    fl_len = len(flowerbed)
+    if n == 0:
+        return True
+    if fl_len == 1:
+        if max(flowerbed) == 0:
+            n -= 1
+            return True if n == 0 else False
         else:
-            return True if e_flower == 0 else False
-    elif len(A) == 2:
-        if max(A) == 1:
-            return True if e_flower == 0 else False
+            return True if n == 0 else False
+    elif fl_len == 2:
+        if max(flowerbed) == 0:
+            n -= 1
+            return True if n == 0 else False
         else:
-            e_flower -= 1
-            return True if e_flower == 0 else False
+            return True if n == 0 else False
     
     index_1 = None
     index_2 = None
     index_3 = None
-
-    index_3 = A[1]
-    index_2 = A[0]
-
-    if max(A[:2]) != 1:
-        e_flower -= 1
-        index_1 = 1
-    else:
-        index_1 = index_2
-    index_2 = index_3
-    index_3 = A[2]
-
-    if e_flower > 0:
+    index_2 = flowerbed[0]
+    index_3 = flowerbed[1]
+    flowerPlaced = False
+    if max(index_2, index_3) == 0:
+        n -= 1
+        flowerPlaced = True
+    i = 2
+    while i < fl_len and n > 0:
+        index_1 = index_2 if flowerPlaced == False else 1
+        index_2 = index_3
+        index_3 = flowerbed[i]
+        flowerPlaced = False
         if index_1 == 0 and index_2 == 0 and index_3 == 0:
-            e_flower -= 1
+            n -= 1
+            flowerPlaced = True
+        i += 1
+    index_1 = index_2 if flowerPlaced == False else 1
+    index_2 = index_3
+    if n > 0:
+        if max(index_1, index_2) == 0:
+            n -= 1
+            flowerPlaced = True
     else:
         return True
-    flowerSet = False
-    for i in range(3, len(A)):
-        index_1 = index_2 if flowerSet == False else 1
-        index_2 = index_3
-        index_3 = A[i]
-        if e_flower > 0:
-            if index_1 == 0 and index_2 == 0 and index_3 == 0:
-                e_flower -= 1
-                flowerSet = True
-            else:
-                flowerSet = False
-        else:
-            return True
+    return True if n == 0 else False
 
-    if e_flower > 0:
-        index_1 = index_2 if flowerSet == False else 1
-        index_2 = index_3
-        if index_1 == 0 and index_2 == 0:
-            e_flower -= 1
-    else:
-        return True
-    
-    return True if e_flower == 0 else False
 
 if __name__ == "__main__":
-    A = [1,0,0,0,1]
-    e_flower = 2
+    A = [0]
+    e_flower = 0
     print("Result:",solve1(A, e_flower))
         
 
