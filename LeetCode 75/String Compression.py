@@ -26,6 +26,7 @@
 #            chars.append(str(freq))
 #    return len(chars)
 
+# Update the arr and return the length
 def compress1(chars):
     update_count_i = -1
     i = 0
@@ -83,11 +84,54 @@ def insertList(num):
         list_.append(quo)
     return list_
 
+def compress(chars):
+    i = 0
+    len_i = 0
+    p_i = 0
+    prev_char = ""
+    curr_char = ""
+    while i < len(chars):
+        curr_char = chars[i]
+        if prev_char == "":
+            prev_char = curr_char
+            len_i = i
+        elif prev_char != curr_char:
+            length = i - len_i
+            chars[p_i] = prev_char
+            p_i += 1
+            if length > 1:
+                str_length = str(length)
+                for ch in str_length:
+                    chars[p_i] = ch
+                    p_i += 1
+            prev_char = curr_char
+            len_i = i
+        i += 1
+
+    length = i - len_i
+    chars[p_i] = prev_char
+    p_i += 1
+    if length > 1:
+        str_length = str(length)
+        for ch in str_length:
+            chars[p_i] = ch
+            p_i += 1
+    chars = chars[:p_i]
+    print(chars)
+    return len(chars)
+    
+
+
+
+
+            
+
     
 
 if __name__ == "__main__":
     chars = ["o","o","o","o","o","o","o","o","o","o"]
     #chars = ["a","a","b","b","c","c","c"]
     #chars = ["a","a","b","b","c","c","c","c","c","c","c","c","c","c","c","c","d","d"]
-    print("Result:",compress1(chars))
+    #chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
+    print("Result:",compress(chars))
     print(chars)
