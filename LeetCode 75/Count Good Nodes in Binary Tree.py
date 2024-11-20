@@ -6,7 +6,7 @@ def goodNodes(root):
 def recursion(root, maxNum):
     if root == None:
         return 0
-    if root.val >= maxNum:
+    if root.val >= maxNum: 
         maxNum = root.val
         return 1 + recursion(root.left, maxNum) + recursion(root.right, maxNum)
     else:
