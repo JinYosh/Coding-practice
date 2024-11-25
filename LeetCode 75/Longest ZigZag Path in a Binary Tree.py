@@ -18,4 +18,4 @@ def longestZigZag(root):
                 queue.append((node.right, "Right", steps + 1))
             else:
                 queue.append((node.right, "Right", 1))
-    return best
+    return best 
